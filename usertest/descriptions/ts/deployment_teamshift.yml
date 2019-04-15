@@ -1,0 +1,40 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: teamshift
+spec:
+  selector:
+    matchLabels:
+      app: teamshift
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: teamshift
+    spec:
+      containers:
+      - name: teamshift
+        image: ck004.ck:5000/teamshift:loic1
+        ports:
+        - containerPort: 80
+        env:
+        - name: DB_HOSTNAME
+          value: "mysql"
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "password"
+        - name: DB_NAME
+          value: "teamshift"
+        - name: MASTER
+          value: "true"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_ENGINE
+          value: "django.db.backends.mysql"
+        - name: COMPRESS
+          value: "1"
+        - name: COMPRESS_OFFLINE
+          value: "1"
+        - name:  MAILCATCHER
+          value: "1"
