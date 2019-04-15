@@ -1,0 +1,30 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: testloic
+spec:
+  selector:
+    matchLabels:
+      app: testloic
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: testloic
+    spec:
+      containers:
+      - name: testloic
+        image: ck004.ck:5000/myapp:3
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MYSQL_HOST
+          value: "mysql"
+        - name: MYSQL_USER
+          value: "root"
+        - name: MYSQL_PASS
+          value: "password"
+        - name: MYSLQL_DB
+          value: "test_loic"
+
+

@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: myapp.k8s.crossknowledge.com.br
+  - host: testloic.k8s.crossknowledge.com.br
     http:
       paths:
       - path: /

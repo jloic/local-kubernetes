@@ -1,1 +1,4 @@
 Flask==0.10.1
+pymysql
+flask_restful
+flask_restful_swagger
