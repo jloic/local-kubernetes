@@ -17,6 +17,7 @@ spec:
         image: ck004.ck:5000/teamshift:loic1
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
         env:
         - name: DB_HOSTNAME
           value: "mysql"

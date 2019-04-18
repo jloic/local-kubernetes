@@ -10,13 +10,15 @@ from db import init_db
 app = Flask(__name__)
 api = swagger.docs(Api(app), apiVersion='1')
 
-connection = init_db()
+try:
+    connection = init_db()
+except:
+    connection = None
 
 @app.route('/v1/healthz')
 @app.route('/')
 def index():
     return json.dumps({"code" : 1})
-
 
 class Users(Resource):
     def get(self):
